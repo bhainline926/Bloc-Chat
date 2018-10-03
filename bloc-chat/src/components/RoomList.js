@@ -28,6 +28,11 @@ import React, { Component } from 'react';
     	this.setState({ newRoomName: e.target.value});
     }
 
+    handleSubmit(e) {
+    	e.preventDefault();
+    	this.createRoom(this.state.newRoomName);
+    }
+
    render() {
     return (
       <section>
@@ -36,7 +41,7 @@ import React, { Component } from 'react';
         		{room.name}
         	</li>
       )}
-      <form onSubmit={ (e) => this.createRoom(this.state.newRoomName) }>
+      <form onSubmit={ (e) => { this.handleSubmit(e) } }>
       	<input type="text" value= { this.state.newRoomName } onChange= { (e) => this.handleChange(e) }/>
       	<input type="submit" />
       </form>
