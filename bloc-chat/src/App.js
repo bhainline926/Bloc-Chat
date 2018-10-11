@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
 
 var config = {
     apiKey: "AIzaSyBgwvv-leWfdzmoxLDUAnA_nQUJ_8nw3JQ",
@@ -18,16 +18,29 @@ class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        rooms: [],
-        newRoomName: ''
-      };
-    }
+        activeRoom: null,
+    };
+  }
+  
+  setActiveRoom(room) {
+   this.setState({activeRoom: room});
+ }
 
   render() {
     return (
-      <div className="App">
-        <RoomList firebase={firebase}/>
+  <div className="App">
+    <nav>
+      <div className="sideBar">
+          <h1>Bloc Chat</h1>
+          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)}/>
       </div>
+    </nav>
+    <main>
+      <div>
+      <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
+      </div>
+    </main>
+  </div>
     );
   }
 }

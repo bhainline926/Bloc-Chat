@@ -26,3 +26,15 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.sideBar {
+  color: white;
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  z-index: 2;
+  top: 0; 
+  left: 0;
+  background-color: #111; 
+  padding-top: 20px;
+}
