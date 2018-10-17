@@ -20,6 +20,7 @@ class App extends Component {
       super(props);
       this.state = {
         activeRoom: null,
+        user: null
     };
   }
   
@@ -39,12 +40,12 @@ class App extends Component {
       <div className="sideBar">
           <h1>Bloc Chat</h1>
           <User firebase={firebase} setUser={this.setUser.bind(this)} user={this.state.user}/>
-          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)}/>
+          <RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} user={this.state.user}/>
       </div>
     </nav>
     <main>
       <div>
-      <MessageList firebase={firebase} activeRoom={this.state.activeRoom}/>
+      <MessageList firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user}/>
       </div>
     </main>
   </div>
